@@ -1,1 +1,4 @@
-# promoviFCDugr.github.io
+![PROMOVI](https://github.com/user-attachments/assets/031cbc1f-fbca-4e1c-951b-5a05369014b4)
+# BIENVENIDOS A PROMOVI.FCD
+## ¿Qué es PROMOVI?
+ProMoVi (Proyecto de Movilidad Internacional) es una herramienta web perteneciente al Vicedecanato de Internacionalización de la Facultad de Comunicación y Documentación de la UGR, desarrollada por [Alejandro Rosa Sarabia](https://www.linkedin.com/in/alejandrorosasarabia/) y que tiene como fin servir de apoyo al estudiantado que se encuentra en el proceso de selección de su destino Erasmus o Plan Propio. Gracias a esta herramienta el estudiantado podrá tener a simple vista un mapa visual de todos los destinos a los que se puede ir como parte de los programas europeos ya mencioandos, encontrando información relevante como puede ser una guía orientativa de aquellas asignaturas que pueden ser convalidadas tanto en la UGR como en la universidad de destino.
