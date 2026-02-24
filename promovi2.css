@@ -337,7 +337,7 @@ th {
 .fixed_header tbody {
   display: block;
   overflow: auto;
-  height: 300px;
+  height: 150px;
 }
 .fixed_header thead tr {
   display: block;
