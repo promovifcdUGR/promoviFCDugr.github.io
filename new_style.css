@@ -1,0 +1,66 @@
+/* Enlaces */
+a {
+    color: white;
+}
+
+/* Estilo del cuerpo */
+body {
+    margin:0;
+    display: flex;
+}
+
+/* Estilo del cabecero */
+header {
+    display: flex;
+
+    width: 100%;
+    height: auto;
+
+    position: fixed;
+    top: 0px;
+
+    background-color: #2D4E51;
+    color: white;
+
+    overflow: visible;
+
+    justify-content: center;
+}
+
+.hcontent {
+    display: flex;
+
+    min-width: 70%;
+    max-width: auto;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+}
+
+.hcontent .push {
+    margin-left: auto;
+}
+
+.hcontent .ori {
+    width: 10em;
+    text-align: center;
+}
+
+/* Estilo del pie */
+footer {
+    display: flex;
+
+    width: 100%;
+    height: auto;
+
+    position: fixed;
+    bottom: 0px;
+
+    background-color: #2D4E51;
+    
+    overflow: visible;
+
+    justify-content: center;
+    align-items: center;
+}
