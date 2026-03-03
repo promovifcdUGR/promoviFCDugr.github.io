@@ -1,0 +1,108 @@
+/* Minion Pro */
+
+    @font-face {
+    font-family: 'Minion Pro Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Minion Pro Regular'), url('fonts/MinionPro/MinionPro-Regular.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Minion Pro Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Minion Pro Italic'), url('fonts/MinionPro/MinionPro-It.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Minion Pro Medium';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Minion Pro Medium'), url('fonts/MinionPro/MinionPro-Medium.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Minion Pro Medium Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Minion Pro Medium Italic'), url('fonts/MinionPro/MinionPro-MediumIt.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Minion Pro Semibold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Minion Pro Semibold'), url('fonts/MinionPro/MinionPro-Semibold.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Minion Pro Semibold Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Minion Pro Semibold Italic'), url('fonts/MinionPro/MinionPro-SemiboldIt.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Minion Pro Bold Condensed';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Minion Pro Bold Condensed'), url('fonts/MinionPro/MinionPro-BoldCn.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Minion Pro Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Minion Pro Bold'), url('fonts/MinionPro/MinionPro-Bold.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Minion Pro Bold Condensed Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Minion Pro Bold Condensed Italic'), url('fonts/MinionPro/MinionPro-BoldCnIt.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Minion Pro Bold Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Minion Pro Bold Italic'), url('fonts/MinionPro/MinionPro-BoldIt.woff') format('woff');
+    }
+
+/* Aristotelica */
+
+@font-face {
+    font-family: 'Aristotelica Display DemiBold';
+    src: url('fonts/Aristotelica/Aristotelica\ Display\ DemiBold\ Trial.ttf');
+}
+
+@font-face {
+    font-family: 'Aristotelica Small Caps';
+    src: url('fonts/Aristotelica/AristotelicaSmallCaps-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Aristotelica Text Bold';
+    src: url('fonts/Aristotelica/aristotelica-text-bold.ttf');
+}
+
+/* Nunito */
+@font-face {
+    font-family: 'Nunito Medium';
+    src: url('fonts/Nunito/Nunito-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'Nunito Bold';
+    src: url('fonts/Nunito/Nunito-Bold.ttf');
+}

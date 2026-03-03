@@ -6,7 +6,8 @@ a {
 /* Estilo del cuerpo */
 body {
     margin:0;
-    display: flex;
+
+    font-family: "Nunito Medium", Arial, sans-serif;
 }
 
 /* Estilo del cabecero */
@@ -16,15 +17,15 @@ header {
     width: 100%;
     height: auto;
 
-    position: fixed;
-    top: 0px;
-
     background-color: #2D4E51;
     color: white;
 
     overflow: visible;
 
     justify-content: center;
+
+    font-family: "Aristotelica Text Bold", Arial, sans-serif;
+    font-size: x-large;
 }
 
 .hcontent {
@@ -45,6 +46,40 @@ header {
 .hcontent .ori {
     width: 10em;
     text-align: center;
+
+    font-size: large;
+    font-family: "Minion Pro Regular", "EB Garamond", "Times New Roman", serif;
+}
+
+nav {
+    display: flex;
+
+    width: 100%;
+    height: auto;
+
+    background-color: #DD4E51;
+    color: white;
+
+    font-family: "Nunito Bold", Arial, sans-serif;
+    font-weight: bold;
+
+    justify-content: center;
+
+    overflow: visible;
+
+    flex-wrap: wrap;
+}
+
+/* Estilo de los breadcrumbs */
+.navcontent {
+    display: flex;
+
+    min-width: 70%;
+    max-width: auto;
+}
+
+.navcontent > p {
+    margin-left: 1em;
 }
 
 /* Estilo del pie */
