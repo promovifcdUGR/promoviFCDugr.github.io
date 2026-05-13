@@ -23,6 +23,18 @@
       <ul>
         <li><a href="europaDOC.html">Atrás</a></li>
         <li><a href="">Polonia (INDO)</a></li>
+
+        <li class="dropdown-d">
+          <a href="#">Destinos ▼</a>
+          <ul class="submenu">
+
+            <li id="PLWROCLAW01"><a href="wroclaw_DOC.html">Universidad de Breslavia (ARQUS)</a></li>
+            <li id="PLKATOWIC01"><a href="katowice_DOC.html">Universidad de Silesia en Katowice</a></li>
+            <li id="PLWARSZAW01"><a href="warsaw_DOC.html">Universidad de Varsovia</a></li>
+
+          </ul>
+        </li>
+
       </ul>
     </nav>
 
@@ -121,17 +133,17 @@
       <g id="label_points">
 
         <a href="katowice_DOC.html">
-          <circle name="Universidad de Silesia en Katowice" cx="522" cy="615" fill="red" r="7">
+          <circle id="PLKATOWIC01" name="Universidad de Silesia en Katowice" cx="522" cy="615" fill="red" r="7">
           </circle>
         </a>
 
         <a href="warsaw_DOC.html">
-          <circle name="Universidad de Varsovia" cx="609" cy="475" fill="red" r="7">
+          <circle id="PLWARSZAW01" name="Universidad de Varsovia" cx="609" cy="475" fill="red" r="7">
           </circle>
         </a>
 
         <a href="wroclaw_DOC.html">
-          <circle name="Universidad de Breslavia (ARQUS)" cx="429" cy="553" fill="red" r="7">
+          <circle id="PLWROCLAW01" name="Universidad de Breslavia (ARQUS)" cx="429" cy="553" fill="red" r="7">
           </circle>
         </a>
         
@@ -139,29 +151,78 @@
 
     </svg>
 
-    <div id="tooltip" class="tooltip"></div>
+  </div>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const paths = document.querySelectorAll("a path, a circle");
-        const tooltip = document.getElementById("tooltip");
+  <div id="tooltip" class="tooltip"></div>
 
-        paths.forEach(path => {
-          path.addEventListener("mousemove", function (e) {
-            tooltip.style.display = "block";
-            tooltip.style.left = `${e.pageX - 310}px`;
-            tooltip.style.top = `${e.pageY + 10}px`;
-            tooltip.textContent = this.getAttribute("name");
-          });
+  <script>
 
-          path.addEventListener("mouseleave", function () {
-            tooltip.style.display = "none";
+    document.addEventListener("DOMContentLoaded", function () {
+      const paths = document.querySelectorAll("a path, a circle");
+      const tooltip = document.getElementById("tooltip");
+
+      paths.forEach(path => {
+
+        path.addEventListener("mousemove", function (e) {
+          tooltip.style.display = "block";
+          tooltip.style.left = `${e.pageX + 10}px`;
+          tooltip.style.top = `${e.pageY + 10}px`;
+          tooltip.textContent = this.getAttribute("name"); // Cambiado a "name"
+        });
+
+        path.addEventListener("mouseleave", function () {
+          tooltip.style.display = "none";
+        });
+
+      });
+
+    });
+
+    /* Pintar los círculos de blanco si el ratón está encima */
+    document.addEventListener("DOMContentLoaded", function () {
+      const circles = document.querySelectorAll("a circle");
+
+      circles.forEach( circle => {
+
+        circle.addEventListener("mousemove", function () {
+          circle.style.fill = "HotPink";
+        });
+
+        circle.addEventListener("mouseleave", function () {
+          circle.style.fill = "red";
+        });
+
+      });
+
+    });
+
+    /* Pintar los círculos si el ratón está encima del cuadrado del menú correspondiente */
+    document.addEventListener("DOMContentLoaded", function () {
+      const paths = document.querySelectorAll(".dropdown-d > ul > li");
+      const circles = document.querySelectorAll("a circle");
+
+      paths.forEach(path => {
+
+        path.addEventListener("mousemove", function () {
+          circles.forEach(circle => {
+            if (path.id == circle.id) {
+              circle.style.fill = "HotPink";
+            }
           });
         });
-      });
-    </script>
 
-  </div>
+        path.addEventListener("mouseleave", function () {
+          circles.forEach(circle => {
+            circle.style.fill = "red";
+          });
+        });
+
+      });
+
+    });
+
+  </script>
+
 </body>
 
 </html>

@@ -22,8 +22,21 @@
 
     <nav class="menu">
       <ul>
+
         <li><a href="europaDOC.html">Atrás</a></li>
         <li><a href="#">Alemania (INDO)</a></li>
+
+        <li class="dropdown-d">
+          <a href="#">Destinos ▼</a>
+          <ul class="submenu">
+
+            <li id="DLEIPZIG02"><a href="leipzig_DOC.html">Universidad de Ciencias Aplicadas de Leipzig</a></li>
+            <li id="DHILDESH01"><a href="hildesheim_DOC.html">Universidad de Hildesheim</a></li>
+            <li id="DDARMSTA02"><a href="darmstadt_DOC.html">Universidad de Ciencias Aplicadas de Darmstadt</a></li>
+
+          </ul>
+        </li>
+
       </ul>
     </nav>
     
@@ -123,17 +136,17 @@
         <g id="label_points">
 
           <a href="leipzig_DOC.html">
-            <circle cx="645" cy="500" r="10" fill="red" name="Universidad de Ciencias Aplicadas de Leipzig">
+            <circle id="DLEIPZIG02" cx="645" cy="500" r="10" fill="red" name="Universidad de Ciencias Aplicadas de Leipzig">
             </circle>
           </a>
 
           <a href="hildesheim_DOC.html">
-            <circle name="Universidad de Hildesheim" cx="463.1" cy="400" fill="red" r="10">
+            <circle id="DHILDESH01" name="Universidad de Hildesheim" cx="463.1" cy="400" fill="red" r="10">
             </circle>
           </a>
 
           <a href="darmstadt_DOC.html">
-            <circle class="Darmstadt" cx="370" cy="668" name="Universidad de Ciencias Aplicadas de Darmstadt" fill="red" r="10">
+            <circle id="DDARMSTA02" class="Darmstadt" cx="370" cy="668" name="Universidad de Ciencias Aplicadas de Darmstadt" fill="red" r="10">
             </circle>
           </a>
 
@@ -146,25 +159,72 @@
 
   <div id="tooltip" class="tooltip"></div>
 
-  </div>
   <script>
+
     document.addEventListener("DOMContentLoaded", function () {
       const paths = document.querySelectorAll("a path, a circle");
       const tooltip = document.getElementById("tooltip");
 
       paths.forEach(path => {
+
         path.addEventListener("mousemove", function (e) {
           tooltip.style.display = "block";
           tooltip.style.left = `${e.pageX + 10}px`;
           tooltip.style.top = `${e.pageY + 10}px`;
-          tooltip.textContent = this.getAttribute("name");
+          tooltip.textContent = this.getAttribute("name"); // Cambiado a "name"
         });
 
         path.addEventListener("mouseleave", function () {
           tooltip.style.display = "none";
         });
+
       });
+
     });
+
+    /* Pintar los círculos de blanco si el ratón está encima */
+    document.addEventListener("DOMContentLoaded", function () {
+      const circles = document.querySelectorAll("a circle");
+
+      circles.forEach( circle => {
+
+        circle.addEventListener("mousemove", function () {
+          circle.style.fill = "HotPink";
+        });
+
+        circle.addEventListener("mouseleave", function () {
+          circle.style.fill = "red";
+        });
+
+      });
+
+    });
+
+    /* Pintar los círculos si el ratón está encima del cuadrado del menú correspondiente */
+    document.addEventListener("DOMContentLoaded", function () {
+      const paths = document.querySelectorAll(".dropdown-d > ul > li");
+      const circles = document.querySelectorAll("a circle");
+
+      paths.forEach(path => {
+
+        path.addEventListener("mousemove", function () {
+          circles.forEach(circle => {
+            if (path.id == circle.id) {
+              circle.style.fill = "HotPink";
+            }
+          });
+        });
+
+        path.addEventListener("mouseleave", function () {
+          circles.forEach(circle => {
+            circle.style.fill = "red";
+          });
+        });
+
+      });
+
+    });
+
   </script>
 </body>
 

@@ -21,8 +21,22 @@
 
         <nav class="menu">
             <ul>
+
                 <li><a href="europaCAV.html">Atrás</a></li>
                 <li><a href="">Turquía (CAV)</a></li>
+
+                <li class="dropdown-d">
+                    <a href="#">Destinos ▼</a>
+
+                    <ul class="submenu">
+
+                        <li id="TRKOCAELI02"><a href="kocaeli_CAV.html">Universidad de Kocaeli (İzmit)</a></li>
+                        <li id="TRSAKARYA01"><a href="sakarya_CAV.html">Universidad de Sakarya (Adapazarı)</a></li>
+
+                    </ul>
+                    
+                </li>
+
             </ul>
         </nav>
 
@@ -440,12 +454,12 @@
                 </path>
 
                 <a href="sakarya_CAV.html">
-                    <circle name="Universidad de Sakarya" cx="270" cy="106" fill="red" r="8">
+                    <circle id="TRSAKARYA01" name="Universidad de Sakarya (Adapazarı)" cx="270" cy="106" fill="red" r="8">
                     </circle>
                 </a>
 
                 <a href="kocaeli_CAV.html">
-                    <circle name="Universidad de Kocaeli" cx="249" cy="100" fill="red" r="8">
+                    <circle id="TRKOCAELI02" name="Universidad de Kocaeli (İzmit)" cx="249" cy="100" fill="red" r="8">
                     </circle>
                 </a>
 
@@ -457,23 +471,71 @@
     <div id="tooltip" class="tooltip"></div>
 
     <script>
+
         document.addEventListener("DOMContentLoaded", function () {
             const paths = document.querySelectorAll("a path, a circle");
             const tooltip = document.getElementById("tooltip");
 
             paths.forEach(path => {
+
                 path.addEventListener("mousemove", function (e) {
                     tooltip.style.display = "block";
                     tooltip.style.left = `${e.pageX + 10}px`;
                     tooltip.style.top = `${e.pageY + 10}px`;
-                    tooltip.textContent = this.getAttribute("name");
+                    tooltip.textContent = this.getAttribute("name"); // Cambiado a "name"
                 });
 
                 path.addEventListener("mouseleave", function () {
                     tooltip.style.display = "none";
                 });
+
             });
+
         });
+
+        /* Pintar los círculos de blanco si el ratón está encima */
+        document.addEventListener("DOMContentLoaded", function () {
+            const circles = document.querySelectorAll("a circle");
+
+            circles.forEach( circle => {
+
+                circle.addEventListener("mousemove", function () {
+                    circle.style.fill = "HotPink";
+                });
+
+                circle.addEventListener("mouseleave", function () {
+                    circle.style.fill = "red";
+                });
+
+            });
+
+        });
+
+        /* Pintar los círculos si el ratón está encima del cuadrado del menú correspondiente */
+        document.addEventListener("DOMContentLoaded", function () {
+            const paths = document.querySelectorAll(".dropdown-d > ul > li");
+            const circles = document.querySelectorAll("a circle");
+
+            paths.forEach(path => {
+
+                path.addEventListener("mousemove", function () {
+                    circles.forEach(circle => {
+                        if (path.id == circle.id) {
+                            circle.style.fill = "HotPink";
+                        }
+                    });
+                });
+
+                path.addEventListener("mouseleave", function () {
+                    circles.forEach(circle => {
+                        circle.style.fill = "red";
+                    });
+                });
+
+            });
+
+        });
+
     </script>
 
 </body>

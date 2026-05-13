@@ -14,13 +14,29 @@
     
     <nav class="menu">
       <ul>
+
         <li><a href="europaCAV.html">Atrás</a></li>
         <li><a href="">Alemania (CAV)</a></li>
+
+        <li class="dropdown-d">
+          <a href="#">Destinos ▼</a>
+          <ul class="submenu">
+
+            <li id="DBERLIN03"><a href="berlin_CAV.html">Universidad de las Artes de Berlín</a></li>
+            <li id="DDARMSTA02"><a href="darmstadt_CAV.html">Universidad de Ciencias Aplicadas de Darmstadt</a></li>
+            <li id="DLEIPZIG02"><a href="leipzig_HTWK_CAV.html">Universidad de Ciencias Aplicadas de Leipzig</a></li>
+            <li id="DLEIPZIG01"><a href="leipzig_U_CAV.html">Universidad de Leipzig (ARQUS)</a></li>
+            <li id="DSTUTTGA06"><a href="stuttgart_CAV.html">Universidad de Medios de Stuttgart</a></li>
+
+          </ul>
+        </li>
+
       </ul>
     </nav>
 
     <svg class="pt" version="1.2" viewbox="0 0 1000 1000" width="1000" xmlns="http://www.w3.org/2000/svg">
       <g transform="scale(0.55) translate(425,425)">
+
         <g id="features">
           
           <a href="">
@@ -116,12 +132,12 @@
         <g id="label_points">
 
           <a href="leipzig_HTWK_CAV.html">
-            <circle cx="639" cy="506" r="10" fill="red" name="Universidad de Ciencias Aplicadas de Leipzig">
+            <circle cx="639" cy="506" r="10" id="DLEIPZIG02" fill="red" name="Universidad de Ciencias Aplicadas de Leipzig">
             </circle>
           </a>
 
           <a href="leipzig_U_CAV.html">
-            <circle cx="645" cy="488" r="10" fill="red" name="Universidad de Leipzig (ARQUS)">
+            <circle cx="645" cy="488" r="10" fill="red" name="Universidad de Leipzig (ARQUS)" id="DLEIPZIG01">
             </circle>
           </a>
 
@@ -131,53 +147,104 @@
           </a> -->
 
           <a href="stuttgart_CAV.html">
-            <circle cx="415" cy="790" name="Universidad de Medios de Stuttgart" fill="red" r="10">
+            <circle cx="415" cy="790" id="DSTUTTGA06" name="Universidad de Medios de Stuttgart" fill="red" r="10">
             </circle>
           </a>
 
           <a href="darmstadt_CAV.html">
-            <circle cx="370" cy="668" name="Universidad de Ciencias Aplicadas de Darmstadt" fill="red" r="10">
+            <circle cx="370" cy="668" id="DDARMSTA02" name="Universidad de Ciencias Aplicadas de Darmstadt" fill="red" r="10">
             </circle>
           </a>
 
           <a href="berlin_CAV.html">
-            <circle cx="718" cy="359" fill="red" r="10" name="Universidad de las Artes de Berlín">
+            <circle cx="718" cy="359" fill="red" r="10" id="DBERLIN03" name="Universidad de las Artes de Berlín">
             </circle>
           </a>
 
         </g>
+
       </g>
     </svg>
-  </div>
-  </div>
-  <div id="tooltip" class="tooltip"></div>
 
   </div>
-   <div class="container4"><a href="mailto:vicricodo@ugr.es"><img src="PROMOVI.png" class="imagenPROMOVI" width="200"
+
+  <div id="tooltip" class="tooltip"></div>
+
+  <div class="container4"><a href="mailto:vicricodo@ugr.es"><img src="PROMOVI.png" class="imagenPROMOVI" width="200"
             height="100"></a><a href="https://fcd.ugr.es"></a></div>
   <div class="container5"><a href="https://ugr.es"><img src="logoUGR.png" width="175" height="50"
         style="float: left"></a></div>
   <div class="container6"><a href="https://fcd.ugr.es"><img src="logoFCD.png" width="300" height="100"
         style="float:right"></a></div>
+
   <script>
+
     document.addEventListener("DOMContentLoaded", function () {
       const paths = document.querySelectorAll("a path, a circle");
       const tooltip = document.getElementById("tooltip");
 
       paths.forEach(path => {
+
         path.addEventListener("mousemove", function (e) {
           tooltip.style.display = "block";
           tooltip.style.left = `${e.pageX + 10}px`;
           tooltip.style.top = `${e.pageY + 10}px`;
-          tooltip.textContent = this.getAttribute("name");
+          tooltip.textContent = this.getAttribute("name"); // Cambiado a "name"
         });
 
         path.addEventListener("mouseleave", function () {
           tooltip.style.display = "none";
         });
+
       });
+
     });
+
+    /* Pintar los círculos de blanco si el ratón está encima */
+    document.addEventListener("DOMContentLoaded", function () {
+      const circles = document.querySelectorAll("a circle");
+
+      circles.forEach( circle => {
+
+        circle.addEventListener("mousemove", function () {
+          circle.style.fill = "HotPink";
+        });
+
+        circle.addEventListener("mouseleave", function () {
+          circle.style.fill = "red";
+        });
+
+      });
+
+    });
+
+    /* Pintar los círculos si el ratón está encima del cuadrado del menú correspondiente */
+    document.addEventListener("DOMContentLoaded", function () {
+      const paths = document.querySelectorAll(".dropdown-d > ul > li");
+      const circles = document.querySelectorAll("a circle");
+
+      paths.forEach(path => {
+
+        path.addEventListener("mousemove", function () {
+          circles.forEach(circle => {
+            if (path.id == circle.id) {
+              circle.style.fill = "HotPink";
+            }
+          });
+        });
+
+        path.addEventListener("mouseleave", function () {
+          circles.forEach(circle => {
+            circle.style.fill = "red";
+          });
+        });
+
+      });
+
+    });
+
   </script>
+
 </body>
 
 </html>

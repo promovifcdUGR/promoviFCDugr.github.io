@@ -22,8 +22,29 @@
 
     <nav class="menu">
       <ul>
+
         <li><a href="pantallainicio.html">Atrás</a></li>
         <li><a href="">Información y Documentación</a></li>
+
+        <li class="dropdown-d">
+          <a href="#">Destinos ▼</a>
+
+          <ul class="submenu">
+
+            <li id="DE"><a href="AlemaniaDOC.html">Alemania</a></li>
+            <li id="HR"><a href="CroaciaDOC.html">Croacia</a></li>
+            <li id="FR"><a href="FranciaDOC.html">Francia</a></li>
+            <li id="GR"><a href="GreciaDOC.html">Grecia</a></li>
+            <li id="IT"><a href="ItaliaDOC.html">Italia</a></li>
+            <li id="LT"><a href="LituaniaDOC.html">Lituania</a></li>
+            <li id="NO"><a href="NoruegaDOC.html">Noruega</a></li>
+            <li id="PT"><a href="PortugalDOC.html">Portugal</a></li>
+            <li id="PL"><a href="PoloniaDOC.html">Polonia</a></li>
+
+          </ul>
+
+        </li>
+
       </ul>
     </nav>
 
@@ -352,26 +373,109 @@
   </div>
   
   <div id="tooltip" class="tooltip"></div>
-  </div>
+
   <script>
+
     document.addEventListener("DOMContentLoaded", function () {
       const paths = document.querySelectorAll("a path, a circle");
       const tooltip = document.getElementById("tooltip");
 
       paths.forEach(path => {
+
         path.addEventListener("mousemove", function (e) {
           tooltip.style.display = "block";
           tooltip.style.left = `${e.pageX + 10}px`;
           tooltip.style.top = `${e.pageY + 10}px`;
-          tooltip.textContent = this.getAttribute("name");
+          tooltip.textContent = this.getAttribute("name"); // Cambiado a "name"
         });
 
         path.addEventListener("mouseleave", function () {
           tooltip.style.display = "none";
         });
+
       });
+
     });
+
+    /* Pintar los círculos si el ratón está encima */
+    document.addEventListener("DOMContentLoaded", function () {
+      const circles = document.querySelectorAll("a circle");
+
+      circles.forEach( circle => {
+
+        circle.addEventListener("mousemove", function () {
+          circle.style.fill = "HotPink";
+        });
+
+        circle.addEventListener("mouseleave", function () {
+          circle.style.fill = "red";
+        });
+
+      });
+
+    });
+
+    /* Pintar los países si el ratón está encima */
+    document.addEventListener("DOMContentLoaded", function () {
+      const countries = document.querySelectorAll(".highlighted");
+
+      countries.forEach( country => {
+
+        country.addEventListener("mousemove", function () {
+          country.style.fill = "#E5E1E2";
+        });
+
+        country.addEventListener("mouseleave", function () {
+          country.style.fill = "#98DADF";
+        });
+
+      });
+
+    });
+
+    /* Pintar los círculos si el ratón está encima del cuadrado del menú correspondiente */
+    /* Pintar los países si el ratón está encima del cuadrado del menú correspondiente */
+    document.addEventListener("DOMContentLoaded", function () {
+      const paths = document.querySelectorAll(".dropdown-d > ul > li");
+      const circles = document.querySelectorAll("a circle");
+      const countries = document.querySelectorAll(".highlighted");
+
+      paths.forEach(path => {
+            
+        path.addEventListener("mousemove", function () {
+
+          circles.forEach(circle => {
+            if (path.id == circle.id) {
+              circle.style.fill = "HotPink";
+            }
+          });
+
+          countries.forEach(country => {
+            if (path.id == country.id) {
+              country.style.fill = "#E5E1E2";
+            }
+          });
+
+        });
+
+        path.addEventListener("mouseleave", function () {
+
+          circles.forEach(circle => {
+            circle.style.fill = "red";
+          });
+
+          countries.forEach(country => {
+            country.style.fill = "#98DADF";
+          });
+
+        });
+
+      });
+
+    });
+
   </script>
+
 </body>
 
 

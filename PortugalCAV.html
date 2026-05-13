@@ -21,8 +21,28 @@
         
         <nav class="menu">
             <ul>
+
                 <li><a href="europaCAV.html">Atrás</a></li>
                 <li><a href="">Portugal (CAV)</a></li>
+
+                <li class="dropdown-d">
+                    <a href="#">Destinos ▼</a>
+
+                    <ul class="submenu">
+
+                        <li id="PVISEU01"><a href="viseu_CAV.html">Instituto Politécnico de Viseo</a></li>
+                        <li id="PFARO02"><a href="faro_CAV.html">Universidad del Algarve (Faro)</a></li>
+                        <li id="PAVEIRO01"><a href="aveiro_CAV.html">Universidad de Aveiro</a></li>
+                        <li id="PCOIMBRA01"><a href="coimbra_CAV.html">Universidad de Coímbra</a></li>
+                        <li id="PLISBOA052"><a href="portolusofona_CAV.html">Universidad Lusófona - Centro Universitario de Oporto</a></li>
+                        <li id="PBRAGA01"><a href="braga_CAV.html">Universidad del Miño (Braga) (ARQUS)</a></li>
+                        <li id="PLISBOA03"><a href="lisboa_CAV.html">Universidad Nueva de Lisboa</a></li>
+                        <li id="PPORTO02"><a href="porto_CAV.html">Universidad de Oporto</a></li>
+
+                    </ul>
+                    
+                </li>
+
             </ul>
         </nav>
         
@@ -125,42 +145,42 @@
             <g id="label_points">
 
                 <a href="faro_CAV.html">
-                    <circle name="Universidad del Algarve (Faro)" cx="530" cy="970" fill="red" r="10">
+                    <circle id="PFARO02" name="Universidad del Algarve (Faro)" cx="530" cy="970" fill="red" r="10">
                     </circle>
                 </a>
 
                 <a href="lisboa_CAV.html">
-                    <circle name="Universidad Nueva de Lisboa" cx="365" cy="674" fill="red" r="10">
+                    <circle id="PLISBOA03" name="Universidad Nueva de Lisboa" cx="365" cy="674" fill="red" r="10">
                     </circle>
                 </a>
 
                 <a href="coimbra_CAV.html">
-                    <circle name="Universidad de Coímbra" cx="467" cy="420" fill="red" r="10">
+                    <circle id="PCOIMBRA01" name="Universidad de Coímbra" cx="467" cy="420" fill="red" r="10">
                     </circle>
                 </a>
 
                 <a href="aveiro_CAV.html">
-                    <circle name="Universidad de Aveiro" cx="430" cy="340" fill="red" r="10">
+                    <circle id="PAVEIRO01" name="Universidad de Aveiro" cx="430" cy="340" fill="red" r="10">
                     </circle>
                 </a>
 
                 <a href="porto_CAV.html">
-                    <circle name="Universidad de Oporto" cx="429" cy="237" fill="red" r="10">
+                    <circle id="PPORTO02" name="Universidad de Oporto" cx="429" cy="237" fill="red" r="10">
                     </circle>
                 </a>
 
                 <a href="portolusofona_CAV.html">
-                    <circle name="Universidad Lusófona - Centro Universitario de Oporto" cx="447" cy="243" fill="red" r="10">
+                    <circle id="PLISBOA052" name="Universidad Lusófona - Centro Universitario de Oporto" cx="447" cy="243" fill="red" r="10">
                     </circle>
                 </a>
 
                 <a href="viseu_CAV.html">
-                    <circle name="Instituto Politécnico de Viseo" cx="532" cy="335" fill="red" r="10">
+                    <circle id="PVISEU01" name="Instituto Politécnico de Viseo" cx="532" cy="335" fill="red" r="10">
                     </circle>
                 </a>
 
                 <a href="braga_CAV.html">
-                    <circle name="Universidad del Miño (Braga) (ARQUS)" cx="469" cy="176" fill="red" r="10">
+                    <circle id="PBRAGA01" name="Universidad del Miño (Braga) (ARQUS)" cx="469" cy="176" fill="red" r="10">
                     </circle>
                 </a>
 
@@ -174,23 +194,71 @@
     <div id="tooltip" class="tooltip"></div>
 
     <script>
+
         document.addEventListener("DOMContentLoaded", function () {
             const paths = document.querySelectorAll("a path, a circle");
             const tooltip = document.getElementById("tooltip");
 
             paths.forEach(path => {
+
                 path.addEventListener("mousemove", function (e) {
                     tooltip.style.display = "block";
                     tooltip.style.left = `${e.pageX + 10}px`;
                     tooltip.style.top = `${e.pageY + 10}px`;
-                    tooltip.textContent = this.getAttribute("name");
+                    tooltip.textContent = this.getAttribute("name"); // Cambiado a "name"
                 });
 
                 path.addEventListener("mouseleave", function () {
                     tooltip.style.display = "none";
                 });
+
             });
+
         });
+
+        /* Pintar los círculos de blanco si el ratón está encima */
+        document.addEventListener("DOMContentLoaded", function () {
+            const circles = document.querySelectorAll("a circle");
+
+            circles.forEach( circle => {
+
+                circle.addEventListener("mousemove", function () {
+                    circle.style.fill = "HotPink";
+                });
+
+                circle.addEventListener("mouseleave", function () {
+                    circle.style.fill = "red";
+                });
+
+            });
+
+        });
+
+        /* Pintar los círculos si el ratón está encima del cuadrado del menú correspondiente */
+        document.addEventListener("DOMContentLoaded", function () {
+            const paths = document.querySelectorAll(".dropdown-d > ul > li");
+            const circles = document.querySelectorAll("a circle");
+
+            paths.forEach(path => {
+
+                path.addEventListener("mousemove", function () {
+                    circles.forEach(circle => {
+                        if (path.id == circle.id) {
+                            circle.style.fill = "HotPink";
+                        }
+                    });
+                });
+
+                path.addEventListener("mouseleave", function () {
+                    circles.forEach(circle => {
+                        circle.style.fill = "red";
+                    });
+                });
+
+            });
+
+        });
+
     </script>
 
 </body>

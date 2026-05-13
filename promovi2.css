@@ -346,3 +346,24 @@ th {
 .fixed_header td {
   width: 250px;
 }
+
+.dropdown-d {
+    margin-left: auto;
+    min-width: auto;
+    width: 10em;
+}
+
+/* Estilos para el menú desplegable */
+.dropdown-d .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    min-width: auto;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-d:hover .submenu {
+    display: block;
+}

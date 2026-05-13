@@ -12,10 +12,38 @@
 <body>
 
   <div class="container">
+
     <nav class="menu">
       <ul>
+
         <li><a href="pantallainicio.html">Atrás</a></li>
         <li><a href="">Comunicación Audiovisual</a></li>
+
+        <li class="dropdown-d">
+          <a href="#">Destinos ▼</a>
+
+          <ul class="submenu">
+
+            <li id="DE"><a href="AlemaniaCAV.html">Alemania</a></li>
+            <li id="CY"><a href="ChipreCAV.html">Chipre</a></li>
+            <li id="HR"><a href="CroaciaCAV.html">Croacia</a></li>
+            <li id="SK"><a href="EslovaquiaCAV.html">Eslovaquia</a></li>
+            <li id="FI"><a href="FinlandiaCAV.html">Finlandia</a></li>
+            <li id="FR"><a href="FranciaCAV.html">Francia</a></li>
+            <li id="IT"><a href="ItaliaCAV.html">Italia</a></li>
+            <li id="IE"><a href="IrlandaCAV.html">Irlanda</a></li>
+            <li id="LT"><a href="LituaniaCAV.html">Lituania</a></li>
+            <li id="NO"><a href="NoruegaCAV.html">Noruega</a></li>
+            <li id="NL"><a href="HolandaCAV.html">Países Bajos</a></li>
+            <li id="PL"><a href="PoloniaCAV.html">Polonia</a></li>
+            <li id="PT"><a href="PortugalCAV.html">Portugal</a></li>
+            <li id="RO"><a href="RumaniaCAV.html">Rumanía</a></li>
+            <li id="TR"><a href="TurquiaCAV.html">Turquía</a></li>
+
+          </ul>
+
+        </li>
+
       </ul>
     </nav>
 
@@ -455,7 +483,7 @@
         </a>
 
         <a href="limassol_CAV.html">
-          <circle cx="833" cy="650" r="3" fill="red" name="Universidad Tecnológica de Chipre (Limasol)"></circle>
+          <circle cx="833" cy="650" r="3" fill="red" name="Universidad Tecnológica de Chipre (Limasol)" id="CYLIMASSO02"></circle>
         </a>
 
         <a href="sakarya_CAV.html">
@@ -470,6 +498,7 @@
     </svg>
 
   </div>
+
   <div class="container4"><a href="mailto:vicricodo@ugr.es"><img src="PROMOVI.png" class="imagenPROMOVI" width="200"
         height="100"></a><a href="https://fcd.ugr.es"></a></div>
   <div class="container5"><a href="https://ugr.es"><img src="logoUGR.png" width="175" height="50"
@@ -480,11 +509,13 @@
   <div id="tooltip" class="tooltip"></div>
 
   <script>
+
     document.addEventListener("DOMContentLoaded", function () {
       const paths = document.querySelectorAll("a path, a circle");
       const tooltip = document.getElementById("tooltip");
 
       paths.forEach(path => {
+
         path.addEventListener("mousemove", function (e) {
           tooltip.style.display = "block";
           tooltip.style.left = `${e.pageX + 10}px`;
@@ -495,8 +526,88 @@
         path.addEventListener("mouseleave", function () {
           tooltip.style.display = "none";
         });
+
       });
+
     });
+
+    /* Pintar los círculos si el ratón está encima */
+    document.addEventListener("DOMContentLoaded", function () {
+      const circles = document.querySelectorAll("a circle");
+
+      circles.forEach( circle => {
+
+        circle.addEventListener("mousemove", function () {
+          circle.style.fill = "HotPink";
+        });
+
+        circle.addEventListener("mouseleave", function () {
+          circle.style.fill = "red";
+        });
+
+      });
+
+    });
+
+    /* Pintar los países si el ratón está encima */
+    document.addEventListener("DOMContentLoaded", function () {
+      const countries = document.querySelectorAll(".highlighted");
+
+      countries.forEach( country => {
+
+        country.addEventListener("mousemove", function () {
+          country.style.fill = "#E5E1E2";
+        });
+
+        country.addEventListener("mouseleave", function () {
+          country.style.fill = "#98DADF";
+        });
+
+      });
+
+    });
+
+    /* Pintar los círculos si el ratón está encima del cuadrado del menú correspondiente */
+    /* Pintar los países si el ratón está encima del cuadrado del menú correspondiente */
+    document.addEventListener("DOMContentLoaded", function () {
+      const paths = document.querySelectorAll(".dropdown-d > ul > li");
+      const circles = document.querySelectorAll("a circle");
+      const countries = document.querySelectorAll(".highlighted");
+
+      paths.forEach(path => {
+            
+        path.addEventListener("mousemove", function () {
+
+          circles.forEach(circle => {
+            if (path.id == circle.id) {
+              circle.style.fill = "HotPink";
+            }
+          });
+
+          countries.forEach(country => {
+            if (path.id == country.id) {
+              country.style.fill = "#E5E1E2";
+            }
+          });
+
+        });
+
+        path.addEventListener("mouseleave", function () {
+
+          circles.forEach(circle => {
+            circle.style.fill = "red";
+          });
+
+          countries.forEach(country => {
+            country.style.fill = "#98DADF";
+          });
+
+        });
+
+      });
+
+    });
+
   </script>
 
 </body>

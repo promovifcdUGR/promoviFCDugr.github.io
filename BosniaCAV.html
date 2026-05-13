@@ -21,8 +21,25 @@
 
         <nav class="menu">
             <ul>
+
                 <li><a href="mundoCAV.html">Atrás</a></li>
                 <li><a href="">Bosnia y Herzegovina (CAV)</a></li>
+
+                <li class="dropdown-d">
+                    <a href="#">Destinos ▼</a>
+
+                    <ul class="submenu">
+
+                        <li id="BOSBANJLU04"><a href="banialuka_CAV.html">Universidad de Bania Luka</a></li>
+                        <li id="BOSDBIJEMOST04"><a href="DMMostar_CAV.html">Universidad Džemal Bijedić de Mostar</a></li>
+                        <li id="BOSMOSTAR04"><a href="Mostar_CAV.html">Universidad de Mostar</a></li>
+                        <li id="BOSUNISARA04"><a href="Sarajevo_CAV.html">Universidad de Sarajevo</a></li>
+                        <li id="BOSEASTSARA04"><a href="SarajevoOrient_CAV.html">Universidad de Sarajevo Oriental (Pale)</a></li>
+
+                    </ul>
+                    
+                </li>
+
             </ul>
         </nav>
 
@@ -131,27 +148,27 @@
                 </a>
 
                 <a href="banialuka_CAV.html">
-                    <circle name="Universidad de Bania Luka" cx="632" cy="327" id="BRSP" fill="red" r="20">
+                    <circle name="Universidad de Bania Luka" cx="632" cy="327" id="BOSBANJLU04" fill="red" r="20">
                     </circle>
                 </a>
 
                 <a href="DMMostar_CAV.html">
-                    <circle name="Universidad Džemal Bijedić de Mostar" cx="894" cy="1052" id="BRSP" fill="red" r="20">
+                    <circle name="Universidad Džemal Bijedić de Mostar" cx="894" cy="1052" id="BOSDBIJEMOST04" fill="red" r="20">
                     </circle>
                 </a>
 
                 <a href="Mostar_CAV.html">
-                    <circle name="Universidad de Mostar" cx="884" cy="1082" id="BRSP" fill="red" r="20">
+                    <circle name="Universidad de Mostar" cx="884" cy="1082" id="BOSMOSTAR04" fill="red" r="20">
                     </circle>
                 </a>
 
                 <a href="SarajevoOrient_CAV.html">
-                    <circle name="Universidad de Sarajevo Oriental (Pale)" cx="1166" cy="811" id="BRSP" fill="red" r="20">
+                    <circle name="Universidad de Sarajevo Oriental (Pale)" cx="1166" cy="811" id="BOSEASTSARA04" fill="red" r="20">
                     </circle>
                 </a>
 
                 <a href="Sarajevo_CAV.html">
-                    <circle name="Universidad de Sarajevo" cx="1099" cy="775" id="BRSP" fill="red" r="20">
+                    <circle name="Universidad de Sarajevo" cx="1099" cy="775" id="BOSUNISARA04" fill="red" r="20">
                     </circle>
                 </a>
 
@@ -163,11 +180,13 @@
     <div id="tooltip" class="tooltip"></div>
 
     <script>
+
         document.addEventListener("DOMContentLoaded", function () {
             const paths = document.querySelectorAll("a path, a circle");
             const tooltip = document.getElementById("tooltip");
 
             paths.forEach(path => {
+
                 path.addEventListener("mousemove", function (e) {
                     tooltip.style.display = "block";
                     tooltip.style.left = `${e.pageX + 10}px`;
@@ -178,8 +197,54 @@
                 path.addEventListener("mouseleave", function () {
                     tooltip.style.display = "none";
                 });
+
             });
+
         });
+
+        /* Pintar los círculos de blanco si el ratón está encima */
+        document.addEventListener("DOMContentLoaded", function () {
+            const circles = document.querySelectorAll("a circle");
+
+            circles.forEach( circle => {
+
+                circle.addEventListener("mousemove", function () {
+                    circle.style.fill = "HotPink";
+                });
+
+                circle.addEventListener("mouseleave", function () {
+                    circle.style.fill = "red";
+                });
+
+            });
+
+        });
+
+        /* Pintar los círculos si el ratón está encima del cuadrado del menú correspondiente */
+        document.addEventListener("DOMContentLoaded", function () {
+            const paths = document.querySelectorAll(".dropdown-d > ul > li");
+            const circles = document.querySelectorAll("a circle");
+
+            paths.forEach(path => {
+
+                path.addEventListener("mousemove", function () {
+                    circles.forEach(circle => {
+                        if (path.id == circle.id) {
+                            circle.style.fill = "HotPink";
+                        }
+                    });
+                });
+
+                path.addEventListener("mouseleave", function () {
+                    circles.forEach(circle => {
+                        circle.style.fill = "red";
+                    });
+                });
+
+            });
+
+        });
+        
     </script>
 
 </body>

@@ -21,8 +21,23 @@
 
         <nav class="menu">
             <ul>
+
                 <li><a href="europaDOC.html">Atrás</a></li>
                 <li><a href="">Portugal (INDO)</a></li>
+
+                <li class="dropdown-d">
+                    <a href="#">Destinos ▼</a>
+
+                    <ul class="submenu">
+
+                        <li id="PCOIMBRA01"><a href="coimbra_DOC.html">Universidad de Coímbra</a></li>
+                        <li id="PLISBOA03"><a href="lisboa_DOC.html">Universidad Nueva de Lisboa</a></li>
+                        <li id="PPORTO02"><a href="porto_DOC.html">Universidad de Oporto</a></li>
+
+                    </ul>
+                    
+                </li>
+
             </ul>
         </nav>
 
@@ -115,17 +130,17 @@
             <g id="label_points">
 
                 <a href="lisboa_DOC.html">
-                    <circle name="Universidad Nueva de Lisboa" cx="365" cy="674" fill="red" r="10">
+                    <circle id="PLISBOA03" name="Universidad Nueva de Lisboa" cx="365" cy="674" fill="red" r="10">
                     </circle>
                 </a>
 
                 <a href="coimbra_DOC.html">
-                    <circle name="Universidad de Coímbra" cx="467" cy="420" fill="red" r="10">
+                    <circle id="PCOIMBRA01" name="Universidad de Coímbra" cx="467" cy="420" fill="red" r="10">
                     </circle>
                 </a>
                 
                 <a href="porto_DOC.html">
-                    <circle name="Universidad de Oporto" cx="438" cy="240.1" fill="red" r="10">
+                    <circle id="PPORTO02" name="Universidad de Oporto" cx="438" cy="240.1" fill="red" r="10">
                     </circle>
                 </a>
                 
@@ -138,23 +153,71 @@
     <div id="tooltip" class="tooltip"></div>
 
     <script>
+
         document.addEventListener("DOMContentLoaded", function () {
             const paths = document.querySelectorAll("a path, a circle");
             const tooltip = document.getElementById("tooltip");
 
             paths.forEach(path => {
+
                 path.addEventListener("mousemove", function (e) {
                     tooltip.style.display = "block";
                     tooltip.style.left = `${e.pageX + 10}px`;
                     tooltip.style.top = `${e.pageY + 10}px`;
-                    tooltip.textContent = this.getAttribute("name");
+                    tooltip.textContent = this.getAttribute("name"); // Cambiado a "name"
                 });
 
                 path.addEventListener("mouseleave", function () {
                     tooltip.style.display = "none";
                 });
+
             });
+
         });
+
+        /* Pintar los círculos de blanco si el ratón está encima */
+        document.addEventListener("DOMContentLoaded", function () {
+            const circles = document.querySelectorAll("a circle");
+
+            circles.forEach( circle => {
+
+                circle.addEventListener("mousemove", function () {
+                    circle.style.fill = "HotPink";
+                });
+
+                circle.addEventListener("mouseleave", function () {
+                    circle.style.fill = "red";
+                });
+
+            });
+
+        });
+
+        /* Pintar los círculos si el ratón está encima del cuadrado del menú correspondiente */
+        document.addEventListener("DOMContentLoaded", function () {
+            const paths = document.querySelectorAll(".dropdown-d > ul > li");
+            const circles = document.querySelectorAll("a circle");
+
+            paths.forEach(path => {
+
+                path.addEventListener("mousemove", function () {
+                    circles.forEach(circle => {
+                        if (path.id == circle.id) {
+                            circle.style.fill = "HotPink";
+                        }
+                    });
+                });
+
+                path.addEventListener("mouseleave", function () {
+                    circles.forEach(circle => {
+                        circle.style.fill = "red";
+                    });
+                });
+
+            });
+
+        });
+
     </script>
 
 </body>

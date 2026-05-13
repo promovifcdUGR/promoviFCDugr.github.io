@@ -21,8 +21,29 @@
 
         <nav class="menu">
             <ul>
+
                 <li><a href="europaCAV.html">Atrás</a></li>
                 <li><a href="">Italia (CAV)</a></li>
+
+                <li class="dropdown-d">
+                    <a href="#">Destinos ▼</a>
+                    <ul class="submenu">
+
+                        <li id="IBERGAMO01"><a href="bergamo_CAV.html">Universidad de Bérgamo</a></li>
+                        <li id="IBOLOGNA01"><a href="bologna_CAV.html">Universidad de Bolonia</a></li>
+                        <li id="IFERRARA01"><a href="ferrara_CAV.html">Universidad de Ferrara</a></li>
+                        <li id="IFIRENZE01"><a href="florencia_CAV.html">Universidad de Florencia</a></li>
+                        <li id="IVARESE02"><a href="varese_CAV.html">Universidad de Insubria (Varese)</a></li>
+                        <li id="IMILAN05"><a href="milan_CAV.html">Universidad Libre de Lengua y Comunicación de Milán</a></li>
+                        <li id="IROMA04"><a href="romalumsa_CAV.html">Universidad LUMSA (Roma)</a></li>
+                        <li id="IPADOVA01"><a href="padova_CAV.html">Universidad de Padua (Erasmus+ y ARQUS)</a></li>
+                        <li id="IPALERMO01"><a href="palermo_CAV.html">Universidad de Palermo</a></li>
+                        <li id="IROMA01"><a href="romasapienza_CAV.html">Universidad de Roma La Sapienza</a></li>
+                        <li id="ITORINO01"><a href="torino_CAV.html">Universidad de Turín</a></li>
+
+                    </ul>
+                </li>
+
             </ul>
         </nav>
 
@@ -150,57 +171,57 @@
             <g id="label_points">
 
                 <a href="torino_CAV.html">
-                    <circle name="Universidad de Turín" cx="352" cy="352" fill="red" r="5">
+                    <circle id="ITORINO01" name="Universidad de Turín" cx="352" cy="352" fill="red" r="5">
                     </circle>
                 </a>
 
                 <a href="bergamo_CAV.html">
-                    <circle name="Universidad de Bérgamo" cx="417" cy="327" fill="red" r="5">
+                    <circle id="IBERGAMO01" name="Universidad de Bérgamo" cx="417" cy="327" fill="red" r="5">
                     </circle>
                 </a>
 
                 <a href="varese_CAV.html">
-                    <circle name="Universidad de Insubria (Varese)" cx="388" cy="319" fill="red" r="5">
+                    <circle id="IVARESE02" name="Universidad de Insubria (Varese)" cx="388" cy="319" fill="red" r="5">
                     </circle>
                 </a>
 
                 <a href="milan_CAV.html">
-                    <circle name="Universidad Libre de Lengua y Comunicación de Milán" cx="400" cy="333.3" fill="red" r="5">
+                    <circle id="IMILAN05" name="Universidad Libre de Lengua y Comunicación de Milán" cx="400" cy="333.3" fill="red" r="5">
                     </circle>
                 </a>
                 
                 <a href="padova_CAV.html">
-                    <circle name="Universidad de Padua (Erasmus+ y ARQUS)" cx="488" cy="337" r="5" fill="red">
+                    <circle id="IPADOVA01" name="Universidad de Padua (Erasmus+ y ARQUS)" cx="488" cy="337" r="5" fill="red">
                     </circle>
                 </a>
 
                 <a href="florencia_CAV.html">
-                    <circle class="Universidad de Florencia" cx="467" cy="412" id="IT52" name="Florencia" fill="red" r="5">
+                    <circle id="IFIRENZE01" name="Universidad de Florencia" cx="467" cy="412" fill="red" r="5">
                     </circle>
                 </a>
 
                 <a href="romasapienza_CAV.html">
-                    <circle name="Universidad de Roma La Sapienza" cx="512" cy="491" fill="red" r="5">
+                    <circle id="IROMA01" name="Universidad de Roma La Sapienza" cx="512" cy="491" fill="red" r="5">
                     </circle>
                 </a>
 
                 <a href="romalumsa_CAV.html">
-                    <circle name="Universidad LUMSA (Roma)" cx="501" cy="493" fill="red" r="5">
+                    <circle id="IROMA04" name="Universidad LUMSA (Roma)" cx="501" cy="493" fill="red" r="5">
                     </circle>
                 </a>
 
                 <a href="palermo_CAV.html">
-                    <circle name="Universidad de Palermo" cx="535" cy="655" fill="red" r="5">
+                    <circle id="IPALERMO01" name="Universidad de Palermo" cx="535" cy="655" fill="red" r="5">
                     </circle>
                 </a>
 
                 <a href="bologna_CAV.html">
-                    <circle name="Universidad de Bolonia" cx="468" cy="377" r="5" fill="red">
+                    <circle id="IBOLOGNA01" name="Universidad de Bolonia" cx="468" cy="377" r="5" fill="red">
                     </circle>
                 </a>
 
                 <a href="ferrara_CAV.html">
-                    <circle name="Universidad de Ferrara" cx="477.5" cy="363" r="5" fill="red">
+                    <circle id="IFERRARA01" name="Universidad de Ferrara" cx="477.5" cy="363" r="5" fill="red">
                     </circle>
                 </a>
 
@@ -214,23 +235,71 @@
     </div>
 
     <script>
+
         document.addEventListener("DOMContentLoaded", function () {
             const paths = document.querySelectorAll("a path, a circle");
             const tooltip = document.getElementById("tooltip");
 
             paths.forEach(path => {
+
                 path.addEventListener("mousemove", function (e) {
                     tooltip.style.display = "block";
                     tooltip.style.left = `${e.pageX + 10}px`;
                     tooltip.style.top = `${e.pageY + 10}px`;
-                    tooltip.textContent = this.getAttribute("name");
+                    tooltip.textContent = this.getAttribute("name"); // Cambiado a "name"
                 });
 
                 path.addEventListener("mouseleave", function () {
                     tooltip.style.display = "none";
                 });
+
             });
+
         });
+
+        /* Pintar los círculos de blanco si el ratón está encima */
+        document.addEventListener("DOMContentLoaded", function () {
+            const circles = document.querySelectorAll("a circle");
+
+            circles.forEach( circle => {
+
+                circle.addEventListener("mousemove", function () {
+                    circle.style.fill = "HotPink";
+                });
+
+                circle.addEventListener("mouseleave", function () {
+                    circle.style.fill = "red";
+                });
+
+            });
+
+        });
+
+        /* Pintar los círculos si el ratón está encima del cuadrado del menú correspondiente */
+        document.addEventListener("DOMContentLoaded", function () {
+            const paths = document.querySelectorAll(".dropdown-d > ul > li");
+            const circles = document.querySelectorAll("a circle");
+
+            paths.forEach(path => {
+
+                path.addEventListener("mousemove", function () {
+                    circles.forEach(circle => {
+                        if (path.id == circle.id) {
+                            circle.style.fill = "HotPink";
+                        }
+                    });
+                });
+
+                path.addEventListener("mouseleave", function () {
+                    circles.forEach(circle => {
+                        circle.style.fill = "red";
+                    });
+                });
+
+            });
+
+        });
+
     </script>
 
 </body>

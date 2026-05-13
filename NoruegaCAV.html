@@ -21,8 +21,20 @@
     
     <nav class="menu">
       <ul>
+
         <li><a href="europaCAV.html">Atrás</a></li>
         <li><a href="">Noruega (CAV)</a></li>
+
+        <li class="dropdown-d">
+          <a href="#">Destinos ▼</a>
+          <ul class="submenu">
+
+            <li id="NBERGEN01"><a href="bergen_CAV.html">Universidad de Bergen</a></li>
+            <li id="NOSLO60"><a href="oslo_CAV.html">Universidad Metropolitana de Oslo</a></li>
+
+          </ul>
+        </li>
+
       </ul>
     </nav>
     
@@ -96,12 +108,12 @@
           <g id="label_points">
 
             <a href="oslo_CAV.html">
-              <circle name="Universidad Metropolitana de Oslo" cx="280.1" cy="840" r="9" fill="red">
+              <circle id="NOSLO60" name="Universidad Metropolitana de Oslo" cx="280.1" cy="840" r="9" fill="red">
               </circle>
             </a>
 
             <a href="bergen_CAV.html">
-              <circle name="Universidad de Bergen" cx="123" cy="814" fill="red" r="9"></circle>
+              <circle id="NBERGEN01" name="Universidad de Bergen" cx="123" cy="814" fill="red" r="9"></circle>
             </a>
 
           </g>
@@ -115,23 +127,71 @@
   <div id="tooltip" class="tooltip"></div>
 
   <script>
+
     document.addEventListener("DOMContentLoaded", function () {
       const paths = document.querySelectorAll("a path, a circle");
       const tooltip = document.getElementById("tooltip");
 
       paths.forEach(path => {
+
         path.addEventListener("mousemove", function (e) {
           tooltip.style.display = "block";
           tooltip.style.left = `${e.pageX + 10}px`;
           tooltip.style.top = `${e.pageY + 10}px`;
-          tooltip.textContent = this.getAttribute("name");
+          tooltip.textContent = this.getAttribute("name"); // Cambiado a "name"
         });
 
         path.addEventListener("mouseleave", function () {
           tooltip.style.display = "none";
         });
+
       });
+
     });
+
+    /* Pintar los círculos de blanco si el ratón está encima */
+    document.addEventListener("DOMContentLoaded", function () {
+      const circles = document.querySelectorAll("a circle");
+
+      circles.forEach( circle => {
+
+        circle.addEventListener("mousemove", function () {
+          circle.style.fill = "HotPink";
+        });
+
+        circle.addEventListener("mouseleave", function () {
+          circle.style.fill = "red";
+        });
+
+      });
+
+    });
+
+    /* Pintar los círculos si el ratón está encima del cuadrado del menú correspondiente */
+    document.addEventListener("DOMContentLoaded", function () {
+      const paths = document.querySelectorAll(".dropdown-d > ul > li");
+      const circles = document.querySelectorAll("a circle");
+
+      paths.forEach(path => {
+
+        path.addEventListener("mousemove", function () {
+          circles.forEach(circle => {
+            if (path.id == circle.id) {
+              circle.style.fill = "HotPink";
+            }
+          });
+        });
+
+        path.addEventListener("mouseleave", function () {
+          circles.forEach(circle => {
+            circle.style.fill = "red";
+          });
+        });
+
+      });
+
+    });
+
   </script>
 
 </body>

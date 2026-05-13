@@ -22,13 +22,32 @@
     
     <nav class="menu">
       <ul>
+
         <li><a href="europaCAV.html">Atrás</a></li>
         <li><a href="">Francia (CAV)</a></li>
+
+        <li class="dropdown-d">
+          <a href="#">Destinos ▼</a>
+          <ul class="submenu">
+
+            <li id="FPARIS052"><a href="pariscatolic_CAV.html">Instituto Católico de París</a></li>
+            <li id="FCERGY-P11"><a href="cergy_CAV.html">Universidad CY Cergy París</a></li>
+            <li id="FSTRASBO48"><a href="strasbourg_CAV.html">Universidad de Estrasburgo</a></li>
+            <li id="FGRENOBL55"><a href="grenoble_CAV.html">Universidad Grenoble Alpes</a></li>
+            <li id="FLYON03"><a href="lyon_CAV.html">Universidad Jean Moulin Lyon 3</a></li>
+            <li id="FLILLE103"><a href="lille_CAV.html">Universidad de Lille</a></li>
+            <li id="FNANCY43"><a href="lorraine_CAV.html">Universidad de Lorena (Nancy)</a></li>
+            <li id="FPARIS013"><a href="paris13_CAV.html">Universidad Sorbona París Norte</a></li>
+
+          </ul>
+        </li>
+
       </ul>
     </nav>
     
     <svg class="svg-image" version="1.2" viewbox="0 0 1000 1000" width="1000" xmlns="http://www.w3.org/2000/svg">
       <g transform="scale(0.55) translate(425,425)">
+
         <g id="features">
 
           <a href="">
@@ -105,47 +124,48 @@
           </a>
 
         </g>
+
       </g>
 
       <g id="label_points">
 
         <a href="lille_CAV.html">
-          <circle name="Universidad de Lille" cx="538" cy="282" fill="red" r="5">
+          <circle id="FLILLE103" name="Universidad de Lille" cx="538" cy="282" fill="red" r="5">
           </circle>
         </a>
 
         <a href="lorraine_CAV.html">
-          <circle name="Universidad de Lorena (Nancy)" cx="645" cy="385" fill="red" r="5">
+          <circle id="FNANCY43" name="Universidad de Lorena (Nancy)" cx="645" cy="385" fill="red" r="5">
           </circle>
         </a>
 
         <a href="strasbourg_CAV.html">
-          <circle name="Universidad de Estrasburgo" cx="698" cy="387" fill="red" r="5">
+          <circle id="FSTRASBO48" name="Universidad de Estrasburgo" cx="698" cy="387" fill="red" r="5">
           </circle>
         </a>
 
         <a href="lyon_CAV.html">
-          <circle name="Universidad Jean Moulin Lyon 3" cx="600" cy="534" fill="red" r="5">
+          <circle id="FLYON03" name="Universidad Jean Moulin Lyon 3" cx="600" cy="534" fill="red" r="5">
           </circle>
         </a>
 
         <a href="grenoble_CAV.html">
-          <circle name="Universidad Grenoble Alpes" cx="625" cy="557" fill="red" r="5">
+          <circle id="FGRENOBL55" name="Universidad Grenoble Alpes" cx="625" cy="557" fill="red" r="5">
           </circle>
         </a>
 
         <a href="paris13_CAV.html">
-          <circle name="Universidad Sorbona París Norte" cx="512" cy="369" fill="red" r="5">
+          <circle id="FPARIS013" name="Universidad Sorbona París Norte" cx="512" cy="369" fill="red" r="5">
           </circle>
         </a>
 
         <a href="pariscatolic_CAV.html">
-          <circle name="Instituto Católico de París" cx="512" cy="378" fill="red" r="5">
+          <circle id="FPARIS052" name="Instituto Católico de París" cx="512" cy="378" fill="red" r="5">
           </circle>
         </a>
         
         <a href="cergy_CAV.html">
-          <circle name="Universidad CY Cergy París" cx="502" cy="368" fill="red" r="5">
+          <circle id="FCERGY-P11" name="Universidad CY Cergy París" cx="502" cy="368" fill="red" r="5">
           </circle>
         </a>
 
@@ -158,23 +178,71 @@
   <div id="tooltip" class="tooltip"></div>
 
   <script>
+
     document.addEventListener("DOMContentLoaded", function () {
       const paths = document.querySelectorAll("a path, a circle");
       const tooltip = document.getElementById("tooltip");
 
       paths.forEach(path => {
+
         path.addEventListener("mousemove", function (e) {
           tooltip.style.display = "block";
           tooltip.style.left = `${e.pageX + 10}px`;
           tooltip.style.top = `${e.pageY + 10}px`;
-          tooltip.textContent = this.getAttribute("name");
+          tooltip.textContent = this.getAttribute("name"); // Cambiado a "name"
         });
 
         path.addEventListener("mouseleave", function () {
           tooltip.style.display = "none";
         });
+
       });
+
     });
+
+    /* Pintar los círculos de blanco si el ratón está encima */
+    document.addEventListener("DOMContentLoaded", function () {
+      const circles = document.querySelectorAll("a circle");
+
+      circles.forEach( circle => {
+
+        circle.addEventListener("mousemove", function () {
+          circle.style.fill = "HotPink";
+        });
+
+        circle.addEventListener("mouseleave", function () {
+          circle.style.fill = "red";
+        });
+
+      });
+
+    });
+
+    /* Pintar los círculos si el ratón está encima del cuadrado del menú correspondiente */
+    document.addEventListener("DOMContentLoaded", function () {
+      const paths = document.querySelectorAll(".dropdown-d > ul > li");
+      const circles = document.querySelectorAll("a circle");
+
+      paths.forEach(path => {
+
+        path.addEventListener("mousemove", function () {
+          circles.forEach(circle => {
+            if (path.id == circle.id) {
+              circle.style.fill = "HotPink";
+            }
+          });
+        });
+
+        path.addEventListener("mouseleave", function () {
+          circles.forEach(circle => {
+            circle.style.fill = "red";
+          });
+        });
+
+      });
+
+    });
+
   </script>
 
 </body>
