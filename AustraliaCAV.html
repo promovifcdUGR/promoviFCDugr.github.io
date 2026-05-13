@@ -21,8 +21,23 @@
 
         <nav class="menu">
             <ul>
+
                 <li><a href="mundoCAV.html">Atrás</a></li>
                 <li><a href="">Australia (CAV)</a></li>
+
+                <li class="dropdown-d">
+                    <a href="#">Destinos ▼</a>
+
+                    <ul class="submenu">
+
+                        <li id="AUSADELAIDE05"><a href="adelaida_CAV.html">Universidad de Adelaida</a></li>
+                        <li id="AUSMELBOURN05"><a href="melbourne_CAV.html">Universidad de Melbourne</a></li>
+                        <li id="AUSTESIDNEY05"><a href="sydneyUT_CAV.html">Universidad Tecnológica de Sídney</a></li>
+
+                    </ul>
+                    
+                </li>
+
             </ul>
         </nav>
 
@@ -77,17 +92,17 @@
                 </path>
                 
                 <a href="sydneyUT_CAV.html">
-                    <circle name="Universidad Tecnológica de Sídney" cx="899" cy="643" id="AUNSW" fill="red" r="10">
+                    <circle id="AUSTESIDNEY05" name="Universidad Tecnológica de Sídney" cx="899" cy="643" id="AUNSW" fill="red" r="10">
                     </circle>
                 </a>
 
                 <a href="melbourne_CAV.html">
-                    <circle name="Universidad de Melbourne" cx="762" cy="749" id="AUVIC" fill="red" r="10">
+                    <circle id="AUSMELBOURN05" name="Universidad de Melbourne" cx="762" cy="749" fill="red" r="10">
                     </circle>
                 </a>
                 
                 <a href="adelaida_CAV.html">
-                    <circle name="Universidad de Adelaida" cx="622" cy="672" id="AUACT" fill="red" r="10">
+                    <circle id="AUSADELAIDE05" name="Universidad de Adelaida" cx="622" cy="672" fill="red" r="10">
                     </circle>
                 </a>
 
@@ -99,23 +114,71 @@
     <div id="tooltip" class="tooltip"></div>
 
     <script>
+
         document.addEventListener("DOMContentLoaded", function () {
             const paths = document.querySelectorAll("a path, a circle");
             const tooltip = document.getElementById("tooltip");
 
             paths.forEach(path => {
+
                 path.addEventListener("mousemove", function (e) {
                     tooltip.style.display = "block";
                     tooltip.style.left = `${e.pageX + 10}px`;
                     tooltip.style.top = `${e.pageY + 10}px`;
-                    tooltip.textContent = this.getAttribute("name");
+                    tooltip.textContent = this.getAttribute("name"); // Cambiado a "name"
                 });
 
                 path.addEventListener("mouseleave", function () {
                     tooltip.style.display = "none";
                 });
+
             });
+
         });
+
+        /* Pintar los círculos de blanco si el ratón está encima */
+        document.addEventListener("DOMContentLoaded", function () {
+            const circles = document.querySelectorAll("a circle");
+
+            circles.forEach( circle => {
+
+                circle.addEventListener("mousemove", function () {
+                    circle.style.fill = "HotPink";
+                });
+
+                circle.addEventListener("mouseleave", function () {
+                    circle.style.fill = "red";
+                });
+
+            });
+
+        });
+
+        /* Pintar los círculos si el ratón está encima del cuadrado del menú correspondiente */
+        document.addEventListener("DOMContentLoaded", function () {
+            const paths = document.querySelectorAll(".dropdown-d > ul > li");
+            const circles = document.querySelectorAll("a circle");
+
+            paths.forEach(path => {
+
+                path.addEventListener("mousemove", function () {
+                    circles.forEach(circle => {
+                        if (path.id == circle.id) {
+                            circle.style.fill = "HotPink";
+                        }
+                    });
+                });
+
+                path.addEventListener("mouseleave", function () {
+                    circles.forEach(circle => {
+                        circle.style.fill = "red";
+                    });
+                });
+
+            });
+
+        });
+
     </script>
 
 </body>

@@ -21,8 +21,29 @@
 
         <nav class="menu">
             <ul>
+
                 <li><a href="mundoCAV.html">Atrás</a></li>
                 <li><a href="">Argentina (CAV)</a></li>
+
+                <li class="dropdown-d">
+                    <a href="#">Destinos ▼</a>
+
+                    <ul class="submenu">
+
+                        <li id="RABUENOSA02"><a href="buenosairesUB_CAV.html">Universidad de Buenos Aires</a></li>
+                        <li id="RACATPLATA02"><a href="laplataUC_CAV.html">Universidad Católica de La Plata</a></li>
+                        <li id="RACENTROBA02"><a href="buenosairesUNICEN_CAV.html">Universidad Nacional del Centro de la Provincia de Buenos Aires</a></li>
+                        <li id="RANCORDOBA02"><a href="UNCordoba_CAV.html">Universidad Nacional de Córdoba</a></li>
+                        <li id="RANALCUYO02"><a href="mendozaUNCUYO_CAV.html">Universidad Nacional de Cuyo (Mendoza)</a></li>
+                        <li id="RAENRIOS02"><a href="entrerios_CAV.html">Universidad Nacional de Entre Ríos (Paraná)</a></li>
+                        <li id="RANPLATA02"><a href="laplataUN_CAV.html">Universidad Nacional de La Plata</a></li>
+                        <li id="RAUNSAM02"><a href="sanmartin_CAV.html">Universidad Nacional de San Martín</a></li>
+                        <li id="RASALVADOR02"><a href="elsalvador_CAV.html">Universidad del Salvador</a></li>
+
+                    </ul>
+                    
+                </li>
+
             </ul>
         </nav>
         <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -156,47 +177,47 @@
                 </a>
 
                 <a href="entrerios_CAV.html">
-                    <circle name="Universidad Nacional de Entre Ríos (Paraná)" cx="566" cy="280" id="ARE" fill="red" r="10">
+                    <circle id="RAENRIOS02" name="Universidad Nacional de Entre Ríos (Paraná)" cx="566" cy="280" fill="red" r="10">
                     </circle>
                 </a>
 
                 <a href="mendozaUNCUYO_CAV.html">
-                    <circle name="Universidad Nacional de Cuyo (Mendoza)" cx="391" cy="305" id="ARQ" fill="red" r="10">
+                    <circle id="RANALCUYO02" name="Universidad Nacional de Cuyo (Mendoza)" cx="391" cy="305" fill="red" r="10">
                     </circle>
                 </a>
                 
                 <a href="sanmartin_CAV.html">
-                    <circle name="Universidad Nacional de San Martín" cx="585" cy="337" id="ARB" fill="red" r="10">
+                    <circle id="RAUNSAM02" name="Universidad Nacional de San Martín" cx="585" cy="337" fill="red" r="10">
                     </circle>
                 </a>
 
                 <a href="buenosairesUNICEN_CAV.html">
-                    <circle name="Universidad Nacional del Centro de la Provincia de Buenos Aires" cx="593" cy="420" fill="red" r="10" id="ARC">
+                    <circle id="RACENTROBA02" name="Universidad Nacional del Centro de la Provincia de Buenos Aires" cx="593" cy="420" fill="red" r="10">
                     </circle>
                 </a>
 
                 <a href="buenosairesUB_CAV.html">
-                    <circle name="Universidad de Buenos Aires" cx="610" cy="356.5" fill="red" r="10" id="ARC">
+                    <circle id="RABUENOSA02" name="Universidad de Buenos Aires" cx="610" cy="356.5" fill="red" r="10" id="ARC">
                     </circle>
                 </a>
 
                 <a href="elsalvador_CAV.html">
-                    <circle name="Universidad del Salvador" cx="602" cy="340.5" fill="red" r="10" id="ARC">
+                    <circle id="RASALVADOR02" name="Universidad del Salvador" cx="602" cy="340.5" fill="red" r="10">
                     </circle>
                 </a>
 
                 <a href="laplataUC_CAV.html">
-                    <circle name="Universidad Católica de La Plata" cx="631" cy="360" fill="red" r="10" id="ARC">
+                    <circle id="RACATPLATA02" name="Universidad Católica de La Plata" cx="631" cy="360" fill="red" r="10">
                     </circle>
                 </a>
 
                 <a href="laplataUN_CAV.html">
-                    <circle name="Universidad Nacional de La Plata" cx="619" cy="372" fill="red" r="10" id="ARC">
+                    <circle id="RANPLATA02" name="Universidad Nacional de La Plata" cx="619" cy="372" fill="red" r="10">
                     </circle>
                 </a>
 
                 <a href="UNCordoba_CAV.html">
-                    <circle name="Universidad Nacional de Córdoba" cx="492" cy="270" id="ARS" fill="red" r="10">
+                    <circle id="RANCORDOBA02" name="Universidad Nacional de Córdoba" cx="492" cy="270" fill="red" r="10">
                     </circle>
                 </a>
 
@@ -208,11 +229,13 @@
     <div id="tooltip" class="tooltip"></div>
 
     <script>
+
         document.addEventListener("DOMContentLoaded", function () {
             const paths = document.querySelectorAll("a path, a circle");
             const tooltip = document.getElementById("tooltip");
 
             paths.forEach(path => {
+
                 path.addEventListener("mousemove", function (e) {
                     tooltip.style.display = "block";
                     tooltip.style.left = `${e.pageX + 10}px`;
@@ -223,8 +246,54 @@
                 path.addEventListener("mouseleave", function () {
                     tooltip.style.display = "none";
                 });
+
             });
+
         });
+
+        /* Pintar los círculos de blanco si el ratón está encima */
+        document.addEventListener("DOMContentLoaded", function () {
+            const circles = document.querySelectorAll("a circle");
+
+            circles.forEach( circle => {
+
+                circle.addEventListener("mousemove", function () {
+                    circle.style.fill = "HotPink";
+                });
+
+                circle.addEventListener("mouseleave", function () {
+                    circle.style.fill = "red";
+                });
+
+            });
+
+        });
+
+        /* Pintar los círculos si el ratón está encima del cuadrado del menú correspondiente */
+        document.addEventListener("DOMContentLoaded", function () {
+            const paths = document.querySelectorAll(".dropdown-d > ul > li");
+            const circles = document.querySelectorAll("a circle");
+
+            paths.forEach(path => {
+
+                path.addEventListener("mousemove", function () {
+                    circles.forEach(circle => {
+                        if (path.id == circle.id) {
+                            circle.style.fill = "HotPink";
+                        }
+                    });
+                });
+
+                path.addEventListener("mouseleave", function () {
+                    circles.forEach(circle => {
+                        circle.style.fill = "red";
+                    });
+                });
+
+            });
+
+        });
+
     </script>
 
 </body>
