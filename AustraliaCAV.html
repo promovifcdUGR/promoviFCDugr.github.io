@@ -143,7 +143,7 @@
             circles.forEach( circle => {
 
                 circle.addEventListener("mousemove", function () {
-                    circle.style.fill = "HotPink";
+                    circle.style.fill = "black";
                 });
 
                 circle.addEventListener("mouseleave", function () {
@@ -164,7 +164,7 @@
                 path.addEventListener("mousemove", function () {
                     circles.forEach(circle => {
                         if (path.id == circle.id) {
-                            circle.style.fill = "HotPink";
+                            circle.style.fill = "black";
                         }
                     });
                 });

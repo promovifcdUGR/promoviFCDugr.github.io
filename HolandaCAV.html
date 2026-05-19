@@ -29,7 +29,7 @@
           <a href="#">Destinos ▼</a>
           <ul class="submenu">
 
-            <li id="NLNIJMEGE01"><a href="nijmegen_CAV.html">Universidad Radbodo de Nimega</a></li>
+            <li id="NLNIJMEGE01"><a href="nijmegen_CAV.html">Universidad Radboud (Nijmegen)</a></li>
 
           </ul>
         </li>
@@ -108,7 +108,7 @@
 
         <g id="label_points">
           <a href="nijmegen_CAV.html">
-            <circle id="NLNIJMEGE01" name="Universidad Radbodo de Nimega" cx="615" cy="617" fill="red" r="10">
+            <circle id="NLNIJMEGE01" name="Universidad Radboud (Nijmegen)" cx="615" cy="617" fill="red" r="10">
             </circle>
           </a>
         </g>
@@ -150,7 +150,7 @@
       circles.forEach( circle => {
 
         circle.addEventListener("mousemove", function () {
-          circle.style.fill = "HotPink";
+          circle.style.fill = "black";
         });
 
         circle.addEventListener("mouseleave", function () {
@@ -171,7 +171,7 @@
         path.addEventListener("mousemove", function () {
           circles.forEach(circle => {
             if (path.id == circle.id) {
-              circle.style.fill = "HotPink";
+              circle.style.fill = "black";
             }
           });
         });
