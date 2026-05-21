@@ -350,7 +350,8 @@ th {
 .dropdown-d {
     margin-left: auto;
     min-width: auto;
-    width: 10em;
+    width: 15em;
+    text-align: end;
 }
 
 /* Estilos para el menú desplegable */
@@ -362,6 +363,7 @@ th {
     background-color: #333;
     min-width: auto;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    text-align: start;
 }
 
 .dropdown-d:hover .submenu {
