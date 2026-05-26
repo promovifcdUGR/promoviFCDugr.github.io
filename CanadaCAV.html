@@ -23,6 +23,18 @@
             <ul>
                 <li><a href="mundoCAV.html">Atrás</a></li>
                 <li><a href="">Canadá (CAV)</a></li>
+
+                <li class="dropdown-d">
+                    <a href="#">Destinos ▼</a>
+
+                    <ul class="submenu">
+
+                        <li id="CDNLAVAL01"><a href="laval_CAV.html">Universidad Laval (Ciudad de Quebec)</a></li>
+
+                    </ul>
+                    
+                </li>
+
             </ul>
         </nav>
 
@@ -90,7 +102,7 @@
                 />
 
                 <a href="laval_CAV.html">
-                    <circle name="Universidad Laval (Ciudad de Quebec)" cx="17750" cy="11200" id="CAQC" fill="red" r="400">
+                    <circle id="CDNLAVAL01" name="Universidad Laval (Ciudad de Quebec)" cx="17750" cy="11200" fill="red" r="400">
                     </circle>
                 </a>
 
@@ -105,7 +117,7 @@
                 </a>
 
                 <a href="trent_CAV.html">
-                    <circle name="Universidad del Trent (Peterborough)" cx="13280" cy="15600" id="CAON" fill="red" r="400">
+                    <circle name="Universidad del Trent (Peterborough)" cx="13280" cy="15600" fill="red" r="400">
                     </circle>
                 </a>
 
@@ -118,23 +130,71 @@
     <div id="tooltip" class="tooltip"></div>
 
     <script>
+
         document.addEventListener("DOMContentLoaded", function () {
-            const paths = document.querySelectorAll("a path, a circle");
-            const tooltip = document.getElementById("tooltip");
+         const paths = document.querySelectorAll("a path, a circle");
+         const tooltip = document.getElementById("tooltip");
 
-            paths.forEach(path => {
-                path.addEventListener("mousemove", function (e) {
-                    tooltip.style.display = "block";
-                    tooltip.style.left = `${e.pageX + 10}px`;
-                    tooltip.style.top = `${e.pageY + 10}px`;
-                    tooltip.textContent = this.getAttribute("name"); // Cambiado a "name"
-                });
+         paths.forEach(path => {
 
-                path.addEventListener("mouseleave", function () {
-                    tooltip.style.display = "none";
-                });
+            path.addEventListener("mousemove", function (e) {
+               tooltip.style.display = "block";
+               tooltip.style.left = `${e.pageX + 10}px`;
+               tooltip.style.top = `${e.pageY + 10}px`;
+               tooltip.textContent = this.getAttribute("name"); // Cambiado a "name"
             });
-        });
+
+            path.addEventListener("mouseleave", function () {
+               tooltip.style.display = "none";
+            });
+
+         });
+
+      });
+
+      /* Pintar los círculos de blanco si el ratón está encima */
+      document.addEventListener("DOMContentLoaded", function () {
+         const circles = document.querySelectorAll("a circle");
+
+         circles.forEach( circle => {
+
+            circle.addEventListener("mousemove", function () {
+               circle.style.fill = "black";
+            });
+
+            circle.addEventListener("mouseleave", function () {
+               circle.style.fill = "red";
+            });
+
+         });
+
+      });
+
+      /* Pintar los círculos si el ratón está encima del cuadrado del menú correspondiente */
+      document.addEventListener("DOMContentLoaded", function () {
+         const paths = document.querySelectorAll(".dropdown-d > ul > li");
+         const circles = document.querySelectorAll("a circle");
+
+         paths.forEach(path => {
+
+            path.addEventListener("mousemove", function () {
+               circles.forEach(circle => {
+                  if (path.id == circle.id) {
+                     circle.style.fill = "black";
+                  }
+               });
+            });
+
+            path.addEventListener("mouseleave", function () {
+               circles.forEach(circle => {
+                  circle.style.fill = "red";
+               });
+            });
+
+         });
+
+      });
+
     </script>
     
 </body>
